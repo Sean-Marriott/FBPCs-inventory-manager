@@ -1,13 +1,22 @@
 package FrostBytePCs;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
- * Hello world!
- *
+ * Basic wrapper class for running FXML application
+ * @author Sean Marriott
  */
 public class App 
 {
-    public static void main( String[] args )
+    private static final Logger log = LogManager.getLogger();
+    /**
+     * Method to run the application
+     * @param args command line arguments
+     */
+    public static void main(String[] args)
     {
-        System.out.println( "Hello World!" );
+        log.info("Running application...");
+        MainWindow.main(args);
     }
 }
