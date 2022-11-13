@@ -1,5 +1,9 @@
 package FrostBytePCs.model;
 
+/**
+ * Model class for Part objects
+ * @author Sean Marriott
+ */
 public class Part {
     private int partID;
     private String partName;
@@ -10,6 +14,17 @@ public class Part {
     private String warrantyDate;
     private String partStore;
 
+    /**
+     * Basic constructor for Part objects
+     * @param partID
+     * @param partName
+     * @param partType
+     * @param partCondition
+     * @param partPrice
+     * @param purchaseDate
+     * @param warrantyDate
+     * @param partStore
+     */
     public Part(int partID, String partName, String partType, String partCondition, float partPrice, String purchaseDate, String warrantyDate, String partStore) {
         this.partID = partID;
         this.partName = partName;

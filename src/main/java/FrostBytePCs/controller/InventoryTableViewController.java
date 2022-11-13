@@ -13,6 +13,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+/**
+ * FXML controller class for the inventory tableview scene
+ * This is the basic UI that shows the inventory of parts in a table
+ * @author Sean Marriott
+ */
 public class InventoryTableViewController {
     private static final Logger log = LogManager.getLogger();
 
@@ -21,11 +26,18 @@ public class InventoryTableViewController {
 
     private Stage stage;
 
+    /**
+     * Initializes the tableview
+     * @param stage
+     */
     void init(Stage stage) {
         this.stage = stage;
         initInventoryTable();
     }
 
+    /**
+     * Initializes the inventory table
+     */
     private void initInventoryTable() {
         TableColumn<Part, Integer> partIDCol = new TableColumn<Part,Integer>("Part ID");
         partIDCol.setCellValueFactory(new PropertyValueFactory<Part, Integer>("partID"));
