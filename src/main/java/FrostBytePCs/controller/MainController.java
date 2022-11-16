@@ -41,10 +41,22 @@ public class MainController {
             FXMLLoader tableViewLoader = new FXMLLoader(getClass().getResource("/fxml/inventory_table.fxml"));
             Parent tableViewParent = tableViewLoader.load();
             InventoryTableViewController tableViewController = tableViewLoader.getController();
-            tableViewController.init(stage);
+            tableViewController.init(stage, MainController.this);
             mainWindow.setCenter(tableViewParent);
         } catch (IOException e) {
             log.error("Error loading table view");
+        }
+    }
+
+    public void loadAddPartView(Stage stage) {
+        try {
+            FXMLLoader addPartLoader = new FXMLLoader(getClass().getResource("/fxml/add_part.fxml"));
+            Parent addPartParent = addPartLoader.load();
+            AddPartController addPartController = addPartLoader.getController();
+            addPartController.init(stage, MainController.this);
+            mainWindow.setCenter(addPartParent);
+        } catch (IOException e) {
+            log.error("Error loading add part view");
         }
     }
 }

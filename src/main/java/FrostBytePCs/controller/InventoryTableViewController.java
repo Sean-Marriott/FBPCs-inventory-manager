@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import FrostBytePCs.MainWindow;
 import FrostBytePCs.model.Part;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TableColumn;
@@ -21,6 +25,7 @@ import javafx.stage.Stage;
  */
 public class InventoryTableViewController {
     private static final Logger log = LogManager.getLogger();
+    private MainController mainController;
 
     @FXML
     private TableView<Part> inventoryTableView;
@@ -43,8 +48,9 @@ public class InventoryTableViewController {
      * Initializes the tableview
      * @param stage
      */
-    void init(Stage stage) {
+    void init(Stage stage, MainController mainController) {
         this.stage = stage;
+        this.mainController = mainController;
         initInventoryTable();
     }
 
@@ -94,7 +100,7 @@ public class InventoryTableViewController {
 
     @FXML
     private void addPart() {
-        //TODO
+        mainController.loadAddPartView(stage);
     }
     
     @FXML
