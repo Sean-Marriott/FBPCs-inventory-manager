@@ -1,6 +1,5 @@
 package FrostBytePCs.controller;
 import java.util.ArrayList;
-import java.util.Date;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -8,6 +7,8 @@ import org.apache.logging.log4j.Logger;
 import FrostBytePCs.model.Part;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -23,6 +24,18 @@ public class InventoryTableViewController {
 
     @FXML
     private TableView<Part> inventoryTableView;
+
+    @FXML
+    private Button addButton;
+
+    @FXML
+    private Button editButton;
+
+    @FXML
+    private Button removeButton;
+
+    @FXML
+    private MenuButton filterButton;
 
     private Stage stage;
 
@@ -54,11 +67,11 @@ public class InventoryTableViewController {
         TableColumn<Part, Float> partPriceCol = new TableColumn<Part, Float>("Part Price");
         partPriceCol.setCellValueFactory(new PropertyValueFactory<Part, Float>("partPrice"));
 
-        TableColumn<Part, Date> purchaseDateCol = new TableColumn<Part, Date>("Purchase Date");
-        purchaseDateCol.setCellValueFactory(new PropertyValueFactory<Part, Date>("purchaseDate"));
+        TableColumn<Part, String> purchaseDateCol = new TableColumn<Part, String>("Purchase Date");
+        purchaseDateCol.setCellValueFactory(new PropertyValueFactory<Part, String>("purchaseDate"));
 
-        TableColumn<Part, Date> warrantyDateCol = new TableColumn<Part, Date>("Warranty Date");
-        warrantyDateCol.setCellValueFactory(new PropertyValueFactory<Part, Date>("warrantyDate"));
+        TableColumn<Part, String> warrantyDateCol = new TableColumn<Part, String>("Warranty Date");
+        warrantyDateCol.setCellValueFactory(new PropertyValueFactory<Part, String>("warrantyDate"));
         
         TableColumn<Part, String> partStoreCol = new TableColumn<Part, String>("Part Store");
         partStoreCol.setCellValueFactory(new PropertyValueFactory<Part, String>("partStore"));
@@ -73,8 +86,24 @@ public class InventoryTableViewController {
         inventoryTableView.getColumns().add(partStoreCol);
 
         ArrayList<Part> parts = new ArrayList<Part>();
-        parts.add(new Part(0, null, null, null, 0, null, null, null));
+        Part samplePart = new Part(0, "EVGA GTX 1070 8GB", "Graphics Card", "Used", 150, "16/11/2022", "16/11/2023", "Trade Me");
+        parts.add(samplePart);
         
         inventoryTableView.setItems(FXCollections.observableArrayList(parts));
+    }
+
+    @FXML
+    private void addPart() {
+        //TODO
+    }
+    
+    @FXML
+    private void editPart() {
+        //TODO
+    }
+
+    @FXML
+    private void removePart() {
+        //TODO
     }
 }
