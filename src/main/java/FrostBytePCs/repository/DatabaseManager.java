@@ -45,8 +45,8 @@ public class DatabaseManager {
     public static DatabaseManager getInstance() {
         if (instance == null) {
             // The following line can be used to reach a db file within the jar, however this will not be modifiable
-            // instance = new DatabaseManager("jdbc:sqlite:./src/main/resources/database.db");
-            instance = new DatabaseManager(null);
+            instance = new DatabaseManager("jdbc:sqlite:./src/main/resources/database.db");
+            // instance = new DatabaseManager(null);
         }
         return instance;
     }
@@ -75,21 +75,20 @@ public class DatabaseManager {
     }
 
     /**
-   * Connect to the database with the foreign key constraint enforced.
-   * @return database connection
-   */
-  public Connection connect() {
-    Connection conn = null;
-    try {
-      SQLiteConfig config = new SQLiteConfig();
-      config.enforceForeignKeys(true);
-      conn = DriverManager.getConnection(this.url, config.toProperties());
-    } catch (SQLException e) {
-      log.error(e);
+     * Connect to the database with the foreign key constraint enforced.
+     * @return database connection
+     */
+    public Connection connect() {
+        Connection conn = null;
+        try {
+        SQLiteConfig config = new SQLiteConfig();
+        config.enforceForeignKeys(true);
+        conn = DriverManager.getConnection(this.url, config.toProperties());
+        } catch (SQLException e) {
+        log.error(e);
+        }
+        return conn;
     }
-    return conn;
-  }
-
 
     /**
      * Initialises the database if it does not exist using the sql script included in resources

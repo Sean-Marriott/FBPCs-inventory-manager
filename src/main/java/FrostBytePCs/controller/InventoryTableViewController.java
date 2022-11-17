@@ -92,7 +92,7 @@ public class InventoryTableViewController {
         inventoryTableView.getColumns().add(partStoreCol);
 
         ArrayList<Part> parts = new ArrayList<Part>();
-        Part samplePart = new Part(0, "EVGA GTX 1070 8GB", "Graphics Card", "Used", 150, "16/11/2022", "16/11/2023", "Trade Me");
+        Part samplePart = new Part(0, "EVGA GTX 1070 8GB", "Graphics Card", "Used", 150, "16/11/2022", "16/11/2023", "Trade Me", 1);
         parts.add(samplePart);
         
         inventoryTableView.setItems(FXCollections.observableArrayList(parts));

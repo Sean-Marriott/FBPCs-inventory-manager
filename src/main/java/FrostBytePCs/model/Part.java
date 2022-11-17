@@ -13,6 +13,7 @@ public class Part {
     private String purchaseDate;
     private String warrantyDate;
     private String partStore;
+    private int received;
 
     /**
      * Basic constructor for Part objects
@@ -24,8 +25,9 @@ public class Part {
      * @param purchaseDate
      * @param warrantyDate
      * @param partStore
+     * @param received
      */
-    public Part(int partID, String partName, String partType, String partCondition, float partPrice, String purchaseDate, String warrantyDate, String partStore) {
+    public Part(int partID, String partName, String partType, String partCondition, float partPrice, String purchaseDate, String warrantyDate, String partStore, int received) {
         this.partID = partID;
         this.partName = partName;
         this.partType = partType;
@@ -34,75 +36,76 @@ public class Part {
         this.purchaseDate = purchaseDate;
         this.warrantyDate = warrantyDate;
         this.partStore = partStore;
+        this.received = received;
     }
 
     /**
      * @return the partID
      */
-    public int getID() {
+    public int getPartID() {
         return partID;
     }
 
     /**
      * @param partID the partID to set
      */
-    public void setID(int partID) {
+    public void setPartID(int partID) {
         this.partID = partID;
     }
 
     /**
      * @return the partName
      */
-    public String getName() {
+    public String getPartName() {
         return partName;
     }
 
     /**
      * @param partName the partName to set
      */
-    public void setName(String partName) {
+    public void setPartName(String partName) {
         this.partName = partName;
     }
 
     /**
      * @return the partType
      */
-    public String getType() {
+    public String getPartType() {
         return partType;
     }
 
     /**
      * @param partType the partType to set
      */
-    public void setType(String partType) {
+    public void setPartType(String partType) {
         this.partType = partType;
     }
 
     /**
      * @return the partCondition
      */
-    public String getCondition() {
+    public String getPartCondition() {
         return partCondition;
     }
 
     /**
      * @param partCondition the partCondition to set
      */
-    public void setCondition(String partCondition) {
+    public void setPartCondition(String partCondition) {
         this.partCondition = partCondition;
     }
 
     /**
      * @return the partPrice
      */
-    public float getPrice() {
+    public float getPartPrice() {
         return partPrice;
     }
 
     /**
      * @param partPrice the partPrice to set
      */
-    public void setPrice(float partPrice) {
+    public void setPartPrice(float partPrice) {
         this.partPrice = partPrice;
     }
 
@@ -137,15 +140,29 @@ public class Part {
     /**
      * @return the partStore
      */
-    public String getStore() {
+    public String getPartStore() {
         return partStore;
     }
 
     /**
      * @param partStore the partStore to set
      */
-    public void setStore(String partStore) {
+    public void setPartStore(String partStore) {
         this.partStore = partStore;
+    }
+
+    /**
+     * @return the received status of the part
+     */
+    public int getReceived() {
+        return received;
+    }
+
+    /**
+     * @param received the received status to set
+     */
+    public void setReceived(int received) {
+        this.received = received;
     }
 
 }

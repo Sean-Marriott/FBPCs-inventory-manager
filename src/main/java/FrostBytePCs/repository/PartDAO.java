@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.DuplicateFormatFlagsException;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -45,7 +44,8 @@ public class PartDAO implements DAOInterface<Part> {
                     rs.getFloat("price"),
                     rs.getString("purchaseDate"), 
                     rs.getString("warrantyDate"), 
-                    rs.getString("store")
+                    rs.getString("store"),
+                    rs.getInt("received")
                 ));
             }
             return parts;
@@ -78,7 +78,8 @@ public class PartDAO implements DAOInterface<Part> {
                         rs.getFloat("price"),
                         rs.getString("purchaseDate"), 
                         rs.getString("warrantyDate"), 
-                        rs.getString("store")
+                        rs.getString("store"),
+                        rs.getInt("recieved")
                     );
                 }
                 return part;
@@ -96,16 +97,17 @@ public class PartDAO implements DAOInterface<Part> {
      */
     @Override
     public int add(Part toAdd) {
-        String sql = "INSERT INTO parts (name, type, condition, price, purchaseDate, warrantyDate, store) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO parts (name, type, condition, price, purchaseDate, warrantyDate, store, received) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = databaseManager.connect();
              PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            ps.setString(1, toAdd.getName());
-            ps.setString(2, toAdd.getType());
-            ps.setString(3, toAdd.getCondition());
-            ps.setFloat(4, toAdd.getPrice());
+            ps.setString(1, toAdd.getPartName());
+            ps.setString(2, toAdd.getPartType());
+            ps.setString(3, toAdd.getPartCondition());
+            ps.setFloat(4, toAdd.getPartPrice());
             ps.setString(5, toAdd.getPurchaseDate());
             ps.setString(6, toAdd.getWarrantyDate());
-            ps.setString(7, toAdd.getStore());
+            ps.setString(7, toAdd.getPartStore());
+            ps.setInt(8, toAdd.getReceived());
             
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -127,17 +129,19 @@ public class PartDAO implements DAOInterface<Part> {
      * @param toAdd list of parts to add to the database
      */
     public void addBatch(List<Part> toAdd) {
-        String sql = "INSERT INTO parts (name, type, condition, price, purchaseDate, warrantyDate, store) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO parts (name, type, condition, price, purchaseDate, warrantyDate, store, received) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = databaseManager.connect();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             for (Part part : toAdd) {
-                ps.setString(1, part.getName());
-                ps.setString(2, part.getType());
-                ps.setString(3, part.getCondition());
-                ps.setFloat(4, part.getPrice());
+                ps.setString(1, part.getPartName());
+                ps.setString(2, part.getPartType());
+                ps.setString(3, part.getPartCondition());
+                ps.setFloat(4, part.getPartPrice());
                 ps.setString(5, part.getPurchaseDate());
                 ps.setString(6, part.getWarrantyDate());
-                ps.setString(7, part.getStore());
+                ps.setString(7, part.getPartStore());
+                ps.setInt(8, part.getReceived());
+
                 ps.addBatch();
             }
             ps.executeBatch();
@@ -169,17 +173,18 @@ public class PartDAO implements DAOInterface<Part> {
      */
     @Override
     public void update(Part toUpdate) {
-        String sql = "UPDATE parts SET name=?, type=?, condition=?, price=?, purchaseDate=?, warrantyDate=?, store=? WHERE partID=?";
+        String sql = "UPDATE parts SET name=?, type=?, condition=?, price=?, purchaseDate=?, warrantyDate=?, store=?, received=? WHERE partID=?";
         try (Connection conn = databaseManager.connect();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-                stmt.setString(1, toUpdate.getName());
-                stmt.setString(2, toUpdate.getType());
-                stmt.setString(3, toUpdate.getCondition());
-                stmt.setFloat(4, toUpdate.getPrice());
+                stmt.setString(1, toUpdate.getPartName());
+                stmt.setString(2, toUpdate.getPartType());
+                stmt.setString(3, toUpdate.getPartCondition());
+                stmt.setFloat(4, toUpdate.getPartPrice());
                 stmt.setString(5, toUpdate.getPurchaseDate());
                 stmt.setString(6, toUpdate.getWarrantyDate());
-                stmt.setString(7, toUpdate.getStore());
-                stmt.setInt(8, toUpdate.getID());
+                stmt.setString(7, toUpdate.getPartStore());
+                stmt.setInt(8, toUpdate.getReceived());
+                stmt.setInt(9, toUpdate.getPartID());
                 stmt.executeUpdate();
 
         } catch (SQLException sqlException) {
