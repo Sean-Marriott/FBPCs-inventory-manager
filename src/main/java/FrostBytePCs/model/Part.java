@@ -39,70 +39,70 @@ public class Part {
     /**
      * @return the partID
      */
-    public int getPartID() {
+    public int getID() {
         return partID;
     }
 
     /**
      * @param partID the partID to set
      */
-    public void setPartID(int partID) {
+    public void setID(int partID) {
         this.partID = partID;
     }
 
     /**
      * @return the partName
      */
-    public String getPartName() {
+    public String getName() {
         return partName;
     }
 
     /**
      * @param partName the partName to set
      */
-    public void setPartName(String partName) {
+    public void setName(String partName) {
         this.partName = partName;
     }
 
     /**
      * @return the partType
      */
-    public String getPartType() {
+    public String getType() {
         return partType;
     }
 
     /**
      * @param partType the partType to set
      */
-    public void setPartType(String partType) {
+    public void setType(String partType) {
         this.partType = partType;
     }
 
     /**
      * @return the partCondition
      */
-    public String getPartCondition() {
+    public String getCondition() {
         return partCondition;
     }
 
     /**
      * @param partCondition the partCondition to set
      */
-    public void setPartCondition(String partCondition) {
+    public void setCondition(String partCondition) {
         this.partCondition = partCondition;
     }
 
     /**
      * @return the partPrice
      */
-    public float getPartPrice() {
+    public float getPrice() {
         return partPrice;
     }
 
     /**
      * @param partPrice the partPrice to set
      */
-    public void setPartPrice(float partPrice) {
+    public void setPrice(float partPrice) {
         this.partPrice = partPrice;
     }
 
@@ -137,14 +137,14 @@ public class Part {
     /**
      * @return the partStore
      */
-    public String getPartStore() {
+    public String getStore() {
         return partStore;
     }
 
     /**
      * @param partStore the partStore to set
      */
-    public void setPartStore(String partStore) {
+    public void setStore(String partStore) {
         this.partStore = partStore;
     }
 
